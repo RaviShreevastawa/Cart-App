@@ -1,24 +1,28 @@
-import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { fetchProducts } from '../redux/slices/productSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { setProducts } from '../redux/slices/productSlice';
 import Product from '../components/Product';
+import {sampleProducts} from '../assets/products'
 
 export default function Home() {
   const dispatch = useDispatch();
-  const { items, status } = useSelector(state => state.products);
+  const products = useSelector(state => state.products.items);
+  const user = useSelector(state => state.auth.currentUser)
 
   useEffect(() => {
-    dispatch(fetchProducts());
+    dispatch(setProducts(sampleProducts));
   }, [dispatch]);
 
-  if (status === 'loading') return <p>Loading products...</p>;
-  if (status === 'failed') return <p>Failed to load products.</p>;
-
   return (
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-white">
-      {items.map(product => (
-        <Product key={product.id} product={product} />
-      ))}
-    </div>
+    <>
+      <div>
+        <h2 className='text-center font-bold m-2'>Welcome {user}</h2>
+      </div>
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        {products.map(product => (
+          <Product key={product.id} product={product} />
+        ))}
+      </div>
+    </>
   );
 }

@@ -15,10 +15,6 @@ function Header() {
             name : "Register",
             slug : "/register",
         },
-        {
-            name : "Cart",
-            slug : "/cart",
-        },
     ]
   return (
     <>
@@ -42,6 +38,14 @@ function Header() {
                   </li>
                 ))}
             </ul>
+            <Link
+                    to={"/cart"}
+                    >
+                    <img 
+                    className='h-7 w-10 mr-4 mt-2 duration-200'
+                    src="shopping-cart.png" 
+                    alt="Cart" />
+            </Link>
         </div>
     </>
   )
