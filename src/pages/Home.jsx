@@ -16,7 +16,9 @@ export default function Home() {
   return (
     <>
       <div>
-        <h2 className='text-center font-bold m-2'>Welcome {user}</h2>
+      <h2 className='text-center font-bold m-2'>
+          {user ? `Welcome ${user.fullname}` : 'Welcome Guest'}
+      </h2>
       </div>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {products.map(product => (

@@ -20,6 +20,7 @@ export default function Login() {
       <input
         className="border px-3 py-2 w-full"
         type="text"
+        name='email'
         placeholder="Username"
         onChange={(e) => setUsername(e.target.value)}
       />
@@ -27,6 +28,7 @@ export default function Login() {
         className="border px-3 py-2 w-full"
         type="password"
         placeholder="Password"
+        name='password'
         onChange={(e) => setPassword(e.target.value)}
       />
       <button className="bg-blue-600 text-white px-4 py-2 rounded" type="submit">

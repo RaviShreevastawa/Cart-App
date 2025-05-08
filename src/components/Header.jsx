@@ -1,7 +1,9 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import { useSelector } from 'react-redux';
 
 function Header() {
+    const cart = useSelector(state => state.cart);
     const headerItems = [
         {
             name : "Home",
@@ -18,7 +20,7 @@ function Header() {
     ]
   return (
     <>
-        <div className='bg-amber-600 flex justify-between'>
+        <div className='bg-transparent shadow flex justify-between'>
              <div className='flex'>
                  <Link
                  to={"/"}
@@ -38,14 +40,17 @@ function Header() {
                   </li>
                 ))}
             </ul>
-            <Link
-                    to={"/cart"}
-                    >
-                    <img 
-                    className='h-7 w-10 mr-4 mt-2 duration-200'
-                    src="shopping-cart.png" 
-                    alt="Cart" />
-            </Link>
+            <div className='flex flex-row'>
+                <Link
+                        to={"/cart"}
+                        >
+                        <img 
+                        className='h-7 w-10 mt-2'
+                        src="shopping-cart.png" 
+                        alt="Cart" />
+                </Link>
+                <div className='bg-red-500 h-4 w-4 rounded-full text-center mt-0'>{cart.length}</div>
+            </div>
         </div>
     </>
   )

@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 export default function Register() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({ username: '', password: '' });
+  const [formData, setFormData] = useState({ fullname : '', username: '', password: '' });
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -19,12 +19,21 @@ export default function Register() {
       <input
         className="border px-3 py-2 w-full"
         type="text"
+        name='fullname'
+        placeholder="Fullname"
+        onChange={(e) => setFormData({ ...formData, fullname: e.target.value })}
+      />
+      <input
+        className="border px-3 py-2 w-full"
+        type="text"
+        name='email'
         placeholder="Username"
         onChange={(e) => setFormData({ ...formData, username: e.target.value })}
       />
       <input
         className="border px-3 py-2 w-full"
         type="password"
+        name='password'
         placeholder="Password"
         onChange={(e) => setFormData({ ...formData, password: e.target.value })}
       />
